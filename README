@@ -1,15 +1,14 @@
- _                 _    ____   _____ 
-| |               | |  / __ \ / ____|
-| |__   ___   ___ | |_| |  | | (___  
-| '_ \ / _ \ / _ \| __| |  | |\___ \ 
-| |_) | (_) | (_) | |_| |__| |____) |
-|_.__/ \___/ \___/ \__|\____/|_____/                                                                           
+            _           _____ _____ 
+           (_)         |  _  /  ___|
+ _ __ _   _ _ _ __  ___| | | \ `--. 
+| '__| | | | | '_ \/ __| | | |`--. \
+| |  | |_| | | | | \__ \ \_/ /\__/ /
+|_|   \__,_|_|_| |_|___/\___/\____/ 
+                                                                                                          
+ruinsOS operating system (boot sector)
+by TTXTrick (Dec. 13 2025)
 
-bootOS operating system in 512 bytes (boot sector)
-by Oscar Toledo G. Jul/22/2019
-
-http://nanochess.org
-https://github.com/nanochess/bootOS
+https://github.com/TTXTrick/ruinsOS
 
 It's compatible with 8088 (the original IBM PC).
 
@@ -21,9 +20,9 @@ Use this command line:
   nasm -f bin os.asm -l os.lst -o os.img
 
         
-What is bootOS:
+What is ruinsOS:
 
-  bootOS is a monolithic operating system that fits in
+  ruinsOS is a monolithic operating system that fits in
   one boot sector. It's able to load, execute, and save
   programs. Also keeps a filesystem. It can work with
   any floppy disk size starting at 180K.
@@ -62,7 +61,7 @@ What is bootOS:
 
 Filesystem organization:
 
-  bootOS uses tracks from 0 to 32, side 0, sector 1.
+ ruinsOS uses tracks from 0 to 32, side 0, sector 1.
 
   The directory is contained in track 0, side 0, sector 2.
 
@@ -81,7 +80,7 @@ Filesystem organization:
   The 32nd file is located at track 32, side 0, sector 1.
  
 
-Starting bootOS:
+Starting ruinsOS:
 
   Just make sure to write it at the boot sector of a
   floppy disk. It can work with any floppy disk size
@@ -108,14 +107,14 @@ Starting bootOS:
 
     qemu-system-x86_64 -fda os.img
 
-Running bootOS:
+Running ruinsOS:
 
   The first time you should enter the 'format' command,
   so it initializes the directory. It also copies itself
   again to the boot sector, this is useful to init new
   disks.
         
-bootOS commands:
+ruinsOS commands:
 
   ver           Shows the version (none at the moment)
   dir           Shows the directory's content.
@@ -146,7 +145,7 @@ For example: (Character + is Enter key)
   Hello, world
   $
         
-bootOS programs: (Oh yes! we have software support)
+ruinsOS programs: (Oh yes! we have software support)
         
   cubicDoom     https://github.com/nanochess/cubicDoom
   bricks        https://github.com/nanochess/bricks
