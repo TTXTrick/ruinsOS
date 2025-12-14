@@ -1,10 +1,9 @@
      1                                          ;
-     2                                          ; Shows how to use bootOS services
+     2                                          ; Shows how to use ruinsOS services
      3                                          ;
-     4                                          ; by Oscar Toledo G.
-     5                                          ; http://nanochess.org/
+     4                                          ; by TTXTrick
      6                                          ;
-     7                                          ; Creation date: Jul/31/2019.
+     7                                          ; Creation date: Dec/13/2025.
      8                                          ;
      9                                  
     10                                          org 0x7c00
@@ -79,7 +78,8 @@
     79 0000005A 5B                              pop bx
     80 0000005B CD24                            int 0x24                ; Save file
     81                                  
-    82 0000005D CD20                            int 0x20                ; Return to bootOS
+    82 0000005D CD20                            int 0x20                ; Return to ruinsOS
     83                                  
     84 0000005F 646174612E62696E00      name:   db "data.bin",0
     85                                  
+
