@@ -609,7 +609,7 @@ os15:
         ; Our amazing presentation line
         ;
 intro:
-        db "ruinsOS ROSA 1.1",0
+        db "ruinsOS",0
 
 error_message:
         db "No such command",0
