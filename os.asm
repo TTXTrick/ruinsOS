@@ -614,7 +614,7 @@ os15:
         ; Our amazing presentation line
         ;
 intro:
-        db "bootOS",0
+        db "ruinsOS",0
 
 error_message:
         db "Oops",0
