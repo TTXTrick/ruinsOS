@@ -1,14 +1,9 @@
      1                                          ;
      2                                          ; bootOS, an operating system in 512 bytes
      3                                          ;
-     4                                          ; by Oscar Toledo G.
-     5                                          ; http://nanochess.org/
+     4                                          ; by TTXTrick
      6                                          ;
-     7                                          ; Creation date: Jul/21/2019. 6pm 10pm
-     8                                          ; Revision date: Jul/22/2019. Optimization, corrections and comments.
-     9                                          ; Revision date: Jul/31/2019. Added a service table and allows
-    10                                          ;                             filenames/sources/targets from any segment.
-    11                                          ;                             'del' command now shows errors.
+     7                                          ; Creation date: Dec/13/2025
     12                                          ;
     13                                  
     14                                          cpu 8086
