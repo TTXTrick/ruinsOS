@@ -1,22 +1,17 @@
         ;
-        ; bootOS, an operating system in 512 bytes
+        ; ruinsOS, an operating system in 512 bytes
         ;
-        ; by Oscar Toledo G.
-        ; http://nanochess.org/
+        ; by TTXTrick
         ;
-        ; Creation date: Jul/21/2019. 6pm 10pm
-        ; Revision date: Jul/22/2019. Optimization, corrections and comments.
-        ; Revision date: Jul/31/2019. Added a service table and allows
-        ;                             filenames/sources/targets from any segment.
-        ;                             'del' command now shows errors.
+        ; Creation date: Dec/13/2025.
         ;
 
         cpu 8086
 
         ;
-        ; What is bootOS:
+        ; What is ruinsOS:
         ; 
-        ;   bootOS is a monolithic operating system that fits in
+        ;   ruinsOS is a monolithic operating system that fits in
         ;   one boot sector. It's able to load, execute, and save
         ;   programs. Also keeps a filesystem. It can work with
         ;   any floppy disk size starting at 180K.
@@ -54,7 +49,7 @@
         ; 
         ; Filesystem organization:
         ;
-        ;   bootOS uses tracks from 0 to 32, side 0, sector 1.
+        ;   ruinsOS uses tracks from 0 to 32, side 0, sector 1.
         ;
         ;   The directory is contained in track 0, side 0, sector 2.
         ;
@@ -73,7 +68,7 @@
         ;   The 32nd file is located at track 32, side 0, sector 1.
         ;
         ;
-        ; Starting bootOS:
+        ; Starting ruinsOS:
         ;
         ;   Just make sure to write it at the boot sector of a
         ;   floppy disk. It can work with any floppy disk size
@@ -100,14 +95,14 @@
         ; 
         ;     qemu-system-x86_64 -fda os.img
         ; 
-        ; Running bootOS:
+        ; Running ruinsOS:
         ;
         ;   The first time you should enter the 'format' command,
         ;   so it initializes the directory. It also copies itself
         ;   again to the boot sector, this is useful to init new
         ;   disks.
         ;
-        ; bootOS commands:
+        ; ruinsOS commands:
         ;
         ;   ver           Shows the version (none at the moment)
         ;   dir           Shows the directory's content.
@@ -138,7 +133,7 @@
         ;   Hello, world
         ;   $
         ;
-        ; bootOS programs: (Oh yes! we have software support)
+        ; ruinsOS programs: (Oh yes! we have software support)
         ;
         ;   fbird         https://github.com/nanochess/fbird
         ;   Pillman       https://github.com/nanochess/pillman
@@ -158,7 +153,7 @@
 stack:  equ 0x7700      ; Stack pointer (grows to lower addresses)
 line:   equ 0x7780      ; Buffer for line input
 sector: equ 0x7800      ; Sector data for directory
-osbase: equ 0x7a00      ; bootOS location
+osbase: equ 0x7a00      ; ruinsOS location
 boot:   equ 0x7c00      ; Boot sector location  
 
 entry_size:     equ 16  ; Directory entry size
@@ -166,7 +161,7 @@ sector_size:    equ 512 ; Sector size
 max_entries:    equ sector_size/entry_size
 
         ;
-        ; Cold start of bootOS
+        ; Cold start of ruinsOS
         ;
         ; Notice it is loaded at 0x7c00 (boot) and needs to
         ; relocate itself to 0x7a00 (osbase). The instructions
@@ -183,7 +178,7 @@ start:
         mov sp,stack    ; Set stack to guarantee data safety
 
         cld             ; Clear D flag.
-        mov si,boot     ; Copy bootOS boot sector...
+        mov si,boot     ; Copy ruinsOS boot sector...
         mov di,osbase   ; ...into osbase
         mov cx,sector_size
         rep movsb
@@ -206,10 +201,10 @@ ver_command:
         mov si,intro
 print_then_restart:
         call output_string
-        int int_restart ; Restart bootOS
+        int int_restart ; Restart ruinsOS
 
         ;
-        ; Warm start of bootOS
+        ; Warm start of ruinsOS
         ;
 restart:
         cld             ; Clear D flag.
@@ -450,7 +445,7 @@ format_command:
         mov di,sector   ; Fill whole sector to zero
         mov cx,sector_size
         call write_zero_dir
-        mov bx,osbase   ; Copy bootOS onto first sector
+        mov bx,osbase   ; Copy ruinsOS onto first sector
         dec cx
         jmp short disk
 
@@ -458,7 +453,7 @@ format_command:
         ; Read the directory from disk
         ;
 read_dir:
-        push cs         ; bootOS code segment...
+        push cs         ; ruinsOS code segment...
         pop es          ; ...to sanitize ES register
         mov ah,0x02
         jmp short disk_dir
@@ -620,7 +615,7 @@ error_message:
         db "Oops",0
 
         ;
-        ; Commands supported by bootOS
+        ; Commands supported by ruinsOS
         ;
 commands:
         db 3,"dir"
