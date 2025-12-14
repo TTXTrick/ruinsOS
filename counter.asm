@@ -1,17 +1,16 @@
         ;
-        ; Shows how to use bootOS services
+        ; Shows how to use ruinsOS services
         ;
-        ; by Oscar Toledo G.
-        ; http://nanochess.org/
+        ; by TTXTrick
         ;
-        ; Creation date: Jul/31/2019.
+        ; Creation date: Dec/13/2025.
         ;
 
         org 0x7c00
 
         ;
         ; These segment values and addresses are for
-        ; testing the correct bootOS behavior.
+        ; testing the correct ruinsOS behavior.
         ;
 name_segment:    equ 0x1000
 name_address:    equ 0x0100
@@ -84,7 +83,7 @@ start:
         pop bx
         int 0x24                ; Save file.
 
-        int 0x20                ; Return to bootOS.
+        int 0x20                ; Return to ruinsOS.
 
 name:   db "data.bin",0         ; Filename.
 
