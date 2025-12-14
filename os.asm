@@ -612,7 +612,7 @@ intro:
         db "ruinsOS",0
 
 error_message:
-        db "Oops",0
+        db "No such command",0
 
         ;
         ; Commands supported by ruinsOS
