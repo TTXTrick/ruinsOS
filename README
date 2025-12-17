@@ -211,9 +211,6 @@ with the same command and later copy the binary into the
 .img file using the signature bytes as a clue to locate
 the right position in the image file.
         
-Or you can find a pre-designed disk image along this Git
-with the name osall.img
-        
 Enjoy it!
 
 
