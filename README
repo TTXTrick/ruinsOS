@@ -210,9 +210,6 @@ command, or you can create a file with signature bytes
 with the same command and later copy the binary into the
 .img file using the signature bytes as a clue to locate
 the right position in the image file.
-        
-Enjoy it!
-
 
 Special thanks to Maja Kądziołka (meithecatte) for finding
 some bugs and suggesting enhancements.
