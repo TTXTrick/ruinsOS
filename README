@@ -43,7 +43,7 @@ It's compatible with 8088 (the original IBM PC).
 If you want to assemble it, you must download the Netwide Assembler
 (nasm) from www.nasm.us
 
-Use this command line:
+Use this command:
 
   nasm -f bin os.asm -l os.lst -o os.img
 
@@ -122,16 +122,15 @@ Starting ruinsOS:
   VirtualBox detects the type of disk by the length
   of the image file)
         
-  For Mac OS X and Linux you can create a 360K image
+  For macOS and Linux you can create a 360K image
   in this way:
 
     dd if=/dev/zero of=oszero.img count=719 bs=512
-    cat os.img oszero.img >osbase.img
+    cat os.img oszero.img > osbase.img
 
   Replace 719 with 1439 for 720K, or 2879 for 1.44M.
 
-  Tested with VirtualBox for Mac OS X running Windows XP
-  running it, it also works with qemu:
+  Run it with QEMU:
 
     qemu-system-x86_64 -fda os.img
 
